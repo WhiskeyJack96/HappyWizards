@@ -21,7 +21,7 @@ public class WorldInteraction : MonoBehaviour {
 	void Interact() {
 		Debug.Log(Other);
 		if (Holding != null){
-			Holding.transform.position = this.transform.position + new Vector3(5,0,0);
+			Holding.transform.position = this.transform.position + new Vector3(1,0,0);
 			Holding.GetComponent<Collider2D>().enabled = true;
 			Holding = null;
 		}
