@@ -7,6 +7,7 @@ public class WorldInteraction : MonoBehaviour {
 	public KeyCode interact;
 	public GameObject Other;
 	public GameObject Holding;
+	public StorageContainer container;
 
 	// Update is called once per frame
 	void Update () {
@@ -32,9 +33,22 @@ public class WorldInteraction : MonoBehaviour {
 		}
 	}
 
+	/*void Inventory(){
+		GameObject obj = container.storage[0];
+		container.RemoveItem(obj);
+		Debug.Log(obj.name);
+		GameObject temp = (GameObject)Resources.Load(obj.name);
+		//obj.transform.position = new Vector3(0,0,0);
+		Instantiate(temp, new Vector3(0,0,0), Quaternion.identity);
+	}*/
+
 	void OnCollisionEnter2D(Collision2D other){
 		if(other.gameObject.tag == "PickUp"){
-			Other = other.gameObject;}
+			Other = other.gameObject;
+		}
+	
+		else if(other.gameObject.tag == "Storable"){
+			container.AddItem(other.gameObject.name);
+		}
 	}
-
 }
