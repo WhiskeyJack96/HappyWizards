@@ -19,4 +19,11 @@ public class ClockController : MonoBehaviour {
 		time = System.DateTime.Now;
 		timeText.text = time.Hour + ":" + time.Minute;
 	}
+
+	public DateTime GetDate(){
+		return time;
+	}
+	public TimeSpan GetTime(){
+		return time.TimeOfDay;
+	}
 }
