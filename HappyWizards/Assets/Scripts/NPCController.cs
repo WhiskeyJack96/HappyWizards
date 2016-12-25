@@ -18,7 +18,7 @@ public class NPCController : MonoBehaviour {
 	public Queue<Pair<String, int>> DialogueList;
 
 	public String NPCname;
-	public String dialogue;
+	public Pair<String, int> dialogue;
 
 	public int affinity;
 
@@ -64,6 +64,7 @@ public class NPCController : MonoBehaviour {
 		if(affinity >= dialogue.second){
 			return dialogue.first;
 		}
+		return "";
 	}
 
 //	public int Sell(int payment, Item item){
