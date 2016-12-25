@@ -12,10 +12,13 @@ public class NPCController : MonoBehaviour {
 	public List<Pair<String, TimeSpan>> daySchedule;
 	public GameObject dest;
 
+	private StorageContainer inventory;
+
+	//load dialogue
+	public Queue<Pair<String, int>> DialogueList;
+
 	public String NPCname;
 	public String dialogue;
-	
-	public List<String> inventory;
 
 	public int affinity;
 
@@ -27,6 +30,9 @@ public class NPCController : MonoBehaviour {
 		dest = GameObject.Find(daySchedule[0].first);
 		move = daySchedule[0].second;
 		daySchedule.RemoveAt(0);
+
+		//assumed initialization
+		//inventory.load(NPCname);
 	}
 	
 	// Update is called once per frame
@@ -52,6 +58,21 @@ public class NPCController : MonoBehaviour {
 		return affinity;
 	}
 
+	public String GetDialogue(){
+		dialogue = DialogueList.Dequeue();
+		DialogueList.Enqueue(dialogue);
+		if(affinity >= dialogue.second){
+			return dialogue.first;
+		}
+	}
+
+//	public int Sell(int payment, Item item){
+//		if (payment >= item.cost ){
+//			inventory.RemoveItem(item.name)
+//			return item.cost;
+//		}
+//	}
+	//OnDestroy() save inventory
 }
 
 [Serializable]
