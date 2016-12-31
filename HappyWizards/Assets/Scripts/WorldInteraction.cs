@@ -51,4 +51,7 @@ public class WorldInteraction : MonoBehaviour {
 			container.AddItem(other.gameObject.name);
 		}
 	}
+	void OnCollisionExit2D(){
+		Other = null;
+	}
 }
